@@ -2,3 +2,4 @@
 .emacs.d/clojure-mode/
 .emacs.d/swank/
 .emacs.d/url/
+.vim/.netrwhist
