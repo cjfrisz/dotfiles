@@ -1,0 +1,12 @@
+[alias]
+	br = branch
+	co = checkout
+	ci = commit
+	sm = submodule
+	stat = status
+	st = status
+[user]
+	name = Chris Frisz
+	email = chris.frisz@gmail.com
+[core]
+	editor = emacs -nw
