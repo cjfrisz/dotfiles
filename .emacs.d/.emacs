@@ -3,7 +3,7 @@
 ;; Written by Chris Frisz
 ;; 
 ;; Created 17 Dec 2011
-;; Last modified 26 Nov 2013
+;; Last modified Sat Jan  4 13:56:42 2014
 ;; 
 ;; Initialization file for Emacs.
 ;;----------------------------------------------------------------------
@@ -17,15 +17,15 @@
 
 ;; Add "lisp" for custom-defined elisp functions
 (add-to-list 'load-path
-	     (concat user-emacs-directory
-		     (convert-standard-filename "lisp/")))
+  (concat user-emacs-directory
+    (convert-standard-filename "lisp/")))
 
 ;; Load custom functions
 (load "lisp-load.el")
 
 ;;-- Global and miscellaneous settings --;;
 
-;; Marmalade, because I really don't need to make things hard for
+;; Marmalade: because I really don't need to make things hard for
 ;; myself
 (require 'package)
 (add-to-list 'package-archives
@@ -56,6 +56,9 @@
 ;; Set fill-column value explicitly
 (set 'fill-column 80)
 
+;; Don't need no menu bar
+(menu-bar-mode nil)
+
 ;; Default to text mode if nothing else overrides it
 (set-default 'major-mode 'text-mode)
 
@@ -65,12 +68,12 @@
 ;; Move auto-saves and backup files to the auto-save-list directory
 ;; Modified from the EmacsWiki
 (let ((auto-save-directory 
-       (concat user-emacs-directory
- 	       (convert-standard-filename "auto-save-list/"))))
+  (concat user-emacs-directory
+    (convert-standard-filename "auto-save-list/"))))
   (setq backup-directory-alist
- 	`((".*" . ,auto-save-directory)))
+    `((".*" . ,auto-save-directory)))
   (setq auto-save-file-name-transforms
- 	`((".*" ,auto-save-directory t))))
+    `((".*" ,auto-save-directory t))))
 
 ;; Highlight parentheses in all modes
 ;; Taken from the EmacsWiki
@@ -153,6 +156,7 @@
 
 (setq evil-toggle-key "M-`")
 (require 'evil)
+(evil-mode 1)
 
 ;;--------------------------------;;
 ;;-- Language-specific settings --;;
