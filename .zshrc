@@ -30,21 +30,27 @@ bindkey -e
 
 export PROMPT='[%n@%m %~]$ '
 
-alias ls='ls --color=auto'
+# macs don't like these options to ls
+if [[ `uname` == 'Linux' ]] ; then
+  alias ls='ls --color=auto'
 
-alias l='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -a --color=auto'
-alias lla='ls -la --color=auto'
+  alias l='ls --color=auto'
+  alias ll='ls -l --color=auto'
+  alias la='ls -a --color=auto'
+  alias lla='ls -la --color=auto'
+fi
 
 alias emacs='emacs -nw'
 
-alias reboot='systemctl reboot'
-alias poweroff='systemctl poweroff'
-alias suspend='systemctl suspend'
-alias hibernate='systemctl hibernate'
-alias hybrid-sleep='systemctl hybrid-sleep'
+# stuff just for my home machine
+if [[ `hostname` == 'leto-ii' ]] ; then
+  alias reboot='systemctl reboot'
+  alias poweroff='systemctl poweroff'
+  alias suspend='systemctl suspend'
+  alias hibernate='systemctl hibernate'
+  alias hybrid-sleep='systemctl hybrid-sleep'
+
+  alias screen-on='xset -dpms; xset s off'
+fi
 
 alias less='less -X'
-
-alias screen-on='xset -dpms; xset s off'
