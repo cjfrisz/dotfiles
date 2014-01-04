@@ -30,8 +30,10 @@ bindkey -e
 
 export PROMPT='[%n@%m %~]$ '
 
+os_type=`uname`
+
 # macs don't like these options to ls
-if [[ `uname` == 'Linux' ]] ; then
+if [[ $os_type == 'Linux' ]] ; then
   alias ls='ls --color=auto'
 
   alias l='ls --color=auto'
@@ -40,7 +42,13 @@ if [[ `uname` == 'Linux' ]] ; then
   alias lla='ls -la --color=auto'
 fi
 
-alias emacs='emacs -nw'
+osx_emacs_bin='/Applications/Emacs.app/Contents/MacOS/Emacs'
+
+if [[ $os_type == 'Darwin' ]] && [[ -e $osx_emacs_bin ]] ; then
+  alias emacs="$osx_emacs_bin -nw"
+else
+  alias emacs='emacs -nw'
+fi
 
 # stuff just for my home machine
 if [[ `hostname` == 'leto-ii' ]] ; then
