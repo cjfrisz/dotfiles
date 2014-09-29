@@ -1,3 +1,7 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 " set words to be consistent with Scheme mode
 " ... if you can't beat 'em, join 'em
 set iskeyword=33,35-39,42-58,60-90,94,95,97-122,126,_
@@ -23,10 +27,10 @@ set nowrap
 set listchars+=precedes:<,extends:>
 
 " turn off file type plugin
-filetype plugin off
+"filetype plugin off
 
 " turn on syntax highlighting
-syntax on
+"syntax on
 
 " turn on auto-indent
 " set autoindent
@@ -50,7 +54,7 @@ set noincsearch
 set shiftwidth=2
 
 " only valid in hacked version of vim
-set yankleavecursor=1
+"set yankleavecursor=1
 
 " special case various file types
 autocmd FileType make set noexpandtab
@@ -63,7 +67,8 @@ let g:tex_flavor='latex'
 autocmd FileType tex setlocal spell spelllang=en_us
 
 " set a good text mode color scheme.
-colorscheme desert
+colorscheme solarized
+set background=dark
 
 " turn on the ruler
 set ruler

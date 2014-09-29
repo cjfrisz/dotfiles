@@ -62,3 +62,15 @@ if [[ `hostname` == 'leto-ii' ]] ; then
 fi
 
 alias less='less -X'
+
+if [[ $os_type == 'Darwin' ]] ; then
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+fi
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+setopt notify
+setopt CSH_NULL_GLOB
+
+source .dotfiles/zsh-history-substring-search

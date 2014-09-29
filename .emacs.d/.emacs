@@ -20,6 +20,11 @@
   (concat user-emacs-directory
     (convert-standard-filename "lisp/")))
 
+(setq explicit-shell-file-name
+  (cond ((eq system-type 'gnu/linux) "/usr/bin/zsh")
+	((eq system-type 'darwin) "/usr/local/bin/zsh")
+	(t "/bin/bash")))
+
 ;; Load custom functions
 (load "lisp-load.el")
 
@@ -29,8 +34,13 @@
 ;; myself
 (require 'package)
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
+;; Testing for CIDER
+;(add-to-list 'load-path "~/projects/personal/cider")
 
 ;; Shortcut for goto-line
 (global-set-key "\M-g" 'goto-line)
@@ -54,7 +64,7 @@
 (set 'cjfrisz-date-format "%e %b %Y")
 
 ;; Set fill-column value explicitly
-(set 'fill-column 80)
+(set 'fill-column 72)
 
 ;; Don't need no menu bar
 (menu-bar-mode nil)
@@ -243,19 +253,19 @@
 (put 'match 'clojure-indent-function 1)
 (put 'if 'clojure-indent-function 0) ;; Really??
 
-;; nREPL options
-(when (not (package-installed-p 'nrepl))
-  (package-install 'nrepl))
+;; CIDER options
+(when (not (package-installed-p 'cider))
+  (package-install 'cider))
+(unless (package-installed-p 'cider-tracing)
+  (package-install 'cider-tracing))
 
-(add-hook 'nrepl-interaction-mode-hook
-	  'nrepl-turn-on-eldoc-mode)
+(add-hook 'cider-interaction-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
-(add-to-list 'same-window-buffer-names "*nrepl*")
-(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
-
-(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
-(defun my-nrepl-mode-setup ()
-  (require 'nrepl-ritz))
+(add-hook 'cider-mode-hook 'rainbow-delimiters-mode)
+(setq cider-repl-popup-stacktraces t)
+(setq cider-repl-display-in-current-window t)
+(setq cider-repl-toggle-pretty-printing t)
+;(load-library "troncle")
 
 ;;--ClojureScript--;;
 (when (not (package-installed-p 'clojurescript-mode))
