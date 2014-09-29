@@ -74,3 +74,21 @@ setopt notify
 setopt CSH_NULL_GLOB
 
 source .dotfiles/zsh-history-substring-search
+
+# bind UP and DOWN arrow keys
+if [[ $os_type == 'Darwin' ]] ; then
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+else
+  zmodload zsh/terminfo
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^p' history-substring-search-up
+bindkey -M emacs '^n' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
