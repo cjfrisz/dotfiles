@@ -104,3 +104,6 @@ noremap <c-i> v%=
 noremap ] !)fmt<CR>)
 " [ reformats the current paragraph
 noremap [ !}fmt<CR>}
+
+" the menubar is lame
+set guioptions=ac
