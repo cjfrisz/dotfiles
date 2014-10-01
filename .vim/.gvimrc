@@ -3,8 +3,9 @@
 " strangely,have to set it here as well as in ~/.gvimrc
 set iskeyword=33,35-39,42-58,60-90,94,95,97-122,126,_
 
-" Set the color scheme to ir_black (looks nice in Gvim, but bad on terminal)
-colorscheme ir_black
+" Set the color scheme to solarize
+colorscheme solarized
+set background=dark
 
 " Set the guioptions
 set guioptions=ac

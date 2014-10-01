@@ -67,8 +67,7 @@ let g:tex_flavor='latex'
 autocmd FileType tex setlocal spell spelllang=en_us
 
 " set a good text mode color scheme.
-colorscheme solarized
-set background=dark
+colorscheme ir_black
 
 " turn on the ruler
 set ruler
