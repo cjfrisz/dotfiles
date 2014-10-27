@@ -96,3 +96,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 alias tmo='tail -f Make.out'
 
 makeout () { make $* >&! Make.out }
+
+alias rm='rm -i'
+alias mv='mv -i'
+
+export EDITOR='vim'
+export PATH=~/bin:$PATH
